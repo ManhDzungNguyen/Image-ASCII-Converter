@@ -1,8 +1,11 @@
+import os
 from PIL import Image
-from pathlib import Path 
-import CONFIG
+from pathlib import Path
 
-def image_to_ascii(image_path, width=None, height=None, wh_weight=CONFIG.DEFAULT_WH_WEIGHT):
+
+DEFAULT_WH_WEIGHT = 2.2
+
+def image_to_ascii(image_path, save_path, width=None, height=None, wh_weight=DEFAULT_WH_WEIGHT):
     # Open image and resize
     image = Image.open(image_path)
     raw_width, raw_height = image.size
@@ -32,7 +35,9 @@ def image_to_ascii(image_path, width=None, height=None, wh_weight=CONFIG.DEFAULT
         ascii_image.append(ascii_row)
 
     # Save ASCII image to text file    
-    output_filename = "ita_" + Path(image_path).stem + ".txt"
-    with open(output_filename, "w") as f:
+    ASCII_file = "ita_" + Path(image_path).stem + ".txt"
+    ASCII_path = os.path.join(save_path, ASCII_file)
+
+    with open(ASCII_path, "w") as f:
         for row in ascii_image:
             f.write(''.join(row) + '\n')
