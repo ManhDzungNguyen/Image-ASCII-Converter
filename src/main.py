@@ -1,5 +1,3 @@
-import sys
-import urllib.request
 import img_to_ASCII
 from img_to_ASCII import image_to_ascii
 from utils import input_val, input_path

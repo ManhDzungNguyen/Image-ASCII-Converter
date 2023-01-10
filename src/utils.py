@@ -1,11 +1,11 @@
 import os
 
 
-def input_val(prompt, type=int, default=None):
+def input_val(prompt, input_type=int, default=None):
     raw = input(prompt)
     result = default
     try:
-        result = type(raw)
+        result = input_type(raw)
     except:
         pass
     
